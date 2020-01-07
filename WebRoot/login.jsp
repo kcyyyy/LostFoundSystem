@@ -30,7 +30,7 @@
 </div>
 
 <div id="btn">
-	<a href="#" class="easyui-linkbutton">登录</a>
+	<a href="#" class="easyui-linkbutton">登录1</a>
 </div>
 
 <script type="text/javascript" src="easyui/jquery.min.js"></script>
