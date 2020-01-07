@@ -2,6 +2,7 @@ $(function () {
 	$("#userInfo_user_name").validatebox({
 		required : true, 
 		missingMessage : '请输入学号',
+		validType: 'num'
 	});
 
 	$("#userInfo_password").validatebox({
@@ -27,11 +28,21 @@ $(function () {
 		required : true, 
 		missingMessage : '请输入姓名',
 	});
-
-	$("#userInfo_sex").validatebox({
-		required : true, 
-		missingMessage : '请输入性别',
+	var data = [
+		{'sex' : '男', 'value' : '男' },
+		{'sex' : '女', 'value' : '女' },
+	];
+	$('#userInfo_sex').combobox({
+		textField: 'sex',
+		valueField: 'value',
+		panelHeight: 'auto',
+		required : true,
+		data: data,
 	});
+	// $("#userInfo_sex").validatebox({
+	// 	required : true, 
+	// 	missingMessage : '请输入性别',
+	// });
 
 	$("#userInfo_birthday").datebox({
 	    required : true, 
@@ -42,11 +53,12 @@ $(function () {
 	$("#userInfo_telephone").validatebox({
 		required : true, 
 		missingMessage : '请输入联系电话',
+		validType: 'mobile',
 	});
 
 	$("#userInfo_address").validatebox({
-		required : true, 
-		missingMessage : '请输入家庭地址',
+		required : false, 
+		//missingMessage : '请输入家庭地址',
 	});
 
 	//单击添加按钮
@@ -90,5 +102,20 @@ $(function () {
 	//单击清空按钮
 	$("#userInfoClearButton").click(function () { 
 		$("#userInfoAddForm").form("clear"); 
+	});
+	//扩展自定义验证
+	$.extend($.fn.validatebox.defaults.rules, {
+		num:{
+			validator: function(value) {
+				return /^\d{12}$/i.test(value);
+			},
+			message: '学号必须为12位数字'
+		},
+		mobile: {// 验证手机号码
+            validator: function (value) {
+                return /^(13|15|18)\d{9}$/i.test(value);
+            },
+            message: '手机号码格式不正确'
+        }
 	});
 });

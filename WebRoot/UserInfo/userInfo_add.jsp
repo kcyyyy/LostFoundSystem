@@ -78,4 +78,7 @@
 		</div> 
 	</form>
 </div>
+<script type="text/javascript" src="easyui/jquery.min.js"></script>
+<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="easyui/locale/easyui-lang-zh_CN.js" ></script>
 <script src="${pageContext.request.contextPath}/UserInfo/js/userInfo_add.js"></script> 
