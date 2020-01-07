@@ -223,7 +223,11 @@ $(function () {
 				validators: {
 					notEmpty: {
 						message: "学号不能为空",
-					}
+					},
+					regexp: {
+                        regexp: /^\d{12}$/,
+                        message: '学号必须是12位数字'
+                    }
 				}
 			},
 			"userInfo.password": {
@@ -237,6 +241,10 @@ $(function () {
 				validators: {
 					notEmpty: {
 						message: "确认密码不能为空",
+					}，
+					identical: {
+						field: 'userInfo.password',
+						message: '两次密码不一致'
 					}
 				}
 			},
@@ -265,7 +273,11 @@ $(function () {
 				validators: {
 					notEmpty: {
 						message: "联系电话不能为空",
-					}
+					},
+					 regexp: {
+                         regexp: /^1[3|5|8]{1}[0-9]{9}$/,
+                         message: '请输入正确的联系电话'
+                     }
 				}
 			},
 
